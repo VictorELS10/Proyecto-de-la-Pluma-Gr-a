@@ -1,0 +1,83 @@
+<!DOCTYPE html>     
+<html>
+<body style="background-color: rgb(72, 13, 167);">
+<title>Proyecto de grua</title>
+<h1>Control de Grua </h1>
+
+
+<p>Giro de Base</p>
+<button type="button" id="state" onclick="sv20()" style="background-color: #18e4ff;">Izquierda max</button>
+<button type="button" id="state" onclick="sv24()" style="background-color: #18e4ff;">Derecha max</button>
+
+<p>Bajar y subir Carga </p>
+<button type="button" id="state" onclick="sv12()" style="background-color: rgb(181, 249, 119);">Bajar Carga</button>
+<button type="button" id="state" onclick="sv10()" style="background-color: rgb(181, 249, 119);">Levantar Carga</button>
+<script src="/socket.io/socket.io.js"></script>
+
+
+<p>Pinza </p>
+<button type="button" id="state" onclick="sv33()" style="background-color: rgb(235, 244, 146);">Abrir Pinza</button>
+<button type="button" id="state" onclick="sv32()" style="background-color: rgb(235, 244, 146);">Cerrar Pinza</button>
+<button type="button" id="state" onclick="sv31()" style="background-color: rgb(235, 244, 146);">Cerrar Pinza</button>
+<button type="button" id="state" onclick="sv30()" style="background-color: rgb(235, 244, 146);">Cerrar Pinza max</button>
+
+
+
+<script>
+    var socket = io.connect();
+
+    //servo 3
+    function sv33 (){
+    
+        socket.emit("state3", 2500); //send button state to server 
+    }
+    function sv32 (){
+
+        socket.emit("state3", 2000); //send button state to server
+    }
+    function sv31 (){
+
+        socket.emit("state3", 1750); //send button state to server
+    }
+
+    function sv30 (){
+        
+        socket.emit("state3", 1500); //send button state to server
+    }
+
+    
+
+    //servo 2
+    function sv20 (){
+        socket.emit("state2", 550); //send button state to server 
+    }
+
+   
+
+    function sv24 (){
+       
+        socket.emit("state2", 2450); //send button state to server
+    }
+
+
+    //servo 1
+    function sv10 (){
+       socket.emit("state1", 2500); //send button state to server
+    }
+
+   
+
+    function sv12 (){
+        socket.emit("state1", 750); //send button state to server        
+    }
+
+
+    
+
+</script>
+
+</body>
+</html>
+
+
+
